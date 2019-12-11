@@ -1,0 +1,57 @@
+﻿<Window x:Class="ProjetoWPF.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjetoWPF.WPF"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Lista de Pessoas"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   FontSize="25"/>
+
+        <DataGrid Grid.Row="1" 
+                  Name="DataGridPessoa" 
+                  AutoGenerateColumns="False" ItemsSource="{Binding Pessoas, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True}"
+                  VerticalAlignment="Stretch"
+                  HorizontalAlignment="Stretch">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="Documento"
+                                    Header="Documento"
+                                    Width="0.8*"
+                                    Binding="{Binding Documento}"/>
+                <DataGridTextColumn x:Name="Nome" 
+                                    Header="Nome" 
+                                    Width="4*"
+                                    Binding="{Binding Nome}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" MaxWidth="150"/>
+                <ColumnDefinition Width="*" MaxWidth="150"/>
+                <ColumnDefinition Width="*" MaxWidth="150"/>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" x:Name="btnPesquisar" Click="btnPesquisar_Click"
+                    Content="Pesquisar" Margin="3" Width="140" Height="30" />
+            
+            <Button Grid.Column="1" x:Name="btnLimpar" Click="btnLimpar_Click"
+                    Content="Limpar" Margin="3" Width="140" Height="30"/>
+
+            <Button Grid.Column="2" x:Name="btnCadastrar" Click="btnCadastrar_Click"
+                    Content="Cadastrar" Margin="3" Width="140" Height="30"/>
+        </Grid>
+    </Grid>
+</Window>
